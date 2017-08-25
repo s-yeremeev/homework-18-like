@@ -1,12 +1,12 @@
 import React from "react"
-
+import "./index.scss"
 
 export default (props) => {
   const { like } = props
-  const count = like.length
+  const liked = like.length
   return (
     <div className="like-component">
-      <div>Count: {count}</div>
+      <div>Like: {liked}</div>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom"
 import React from "react"
-import PostComponent from "../postdiv"
-
+import PostComponent from "./PostComponent"
+import "./container.scss"
 
 export default class PostContainer extends React.PureComponent {
     state = {

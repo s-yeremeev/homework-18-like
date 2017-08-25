@@ -1,0 +1,36 @@
+.post-component {
+    margin-bottom: 25px;
+    margin-top: 25px;
+    background-color: #C7F50A;
+
+    .title-post {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 22pt;
+        color: blue;
+        text-align:center
+    }
+  
+    .body-post {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        text-indent: 20px
+
+    }
+
+    .likebtn-dislike {
+      background-color: red;
+        
+      .image-button-dis{
+          width: 120px;
+          height: 80px;
+      }
+    }
+  
+    .likebtn-like {
+      background-color: green;
+     
+      .image-button-like {
+          width: 120px;
+          height: 80px;
+      }
+    }
+  }

@@ -1,13 +1,13 @@
 import ReactDOM from "react-dom"
 import React from "react"
-import PostContainer from "./post"
-import LikeComponent from "./like"
+import PostContainer from "./post/PostContainer"
+import LikeComponent from "./like/LikeComponent"
 import { getLikeFetch } from "./component/fetchPost"
 import { setLocalStorage, getLocalStorage } from "./component/localstorage"
 
- const DEFAULT_POST = [];
- const DEFAULT_LIKE = [];
- const DEFAULT_LIKE_KEY = "like";
+const DEFAULT_POST = [];
+const DEFAULT_LIKE = [];
+const DEFAULT_LIKE_KEY = "like";
 export default class PageContainer extends React.PureComponent {
     state = {
         post: DEFAULT_POST,
@@ -16,18 +16,10 @@ export default class PageContainer extends React.PureComponent {
     constructor(props){
         super(props)
 
-        // addEventListener("scroll", this.checkScroll)
     }
 
-    // checkScroll = async () => {
-    //     const el = document.getElementsByClassName("likebtn-icon lb-like-icon")
-    //     const lastEl = el[el.length -1]
-    //     if (window.scrollY + window.outerHeight - 350 > lastEl.offsetTop) await Promise.all([ 
-    //                     this.render()          
-    //     ])       }
-
     async componentDidMount() {
-        const post = await getLikeFetch()//.then((data)=>{});
+        const post = await getLikeFetch()
         const like = getLocalStorage(DEFAULT_LIKE_KEY);
 
         this.setState({
@@ -44,6 +36,8 @@ export default class PageContainer extends React.PureComponent {
              }
          }, () => setLocalStorage(DEFAULT_LIKE_KEY, this.state.like) )
      }
+
+
      clickDislike = ( id ) => {
          this.setState(({ like }) => ({
             like: like.filter(post => post.id != id)
@@ -55,21 +49,21 @@ export default class PageContainer extends React.PureComponent {
             post,
             like
         } = this.state
+
         return (
             <div
             className = "page-container"
             >
                 <LikeComponent
-                like = { like } 
+                        like = { like } 
                 />
                 <PostContainer
-                post = { post }
-                like = { like } 
-                clickLike = { this.clickLike }
-                clickDislike = { this.clickDislike }
+                        post = { post }
+                        like = { like } 
+                        clickLike = { this.clickLike }
+                        clickDislike = { this.clickDislike }
                 />
             </div>
         )
-    }
-    
+    }    
 }
